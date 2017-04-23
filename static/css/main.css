@@ -1,0 +1,188 @@
+
+.container {
+	width: 100%;
+	height: 100%;
+}
+
+/************Banner Start***************/
+header {
+	position: relative;
+	width: 100%;
+	height: 947px;
+	background-image: url('../image/homepage/background.jpeg');
+	background-size: cover;
+}
+header .title {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 300px;
+	height: 75px;
+	margin-left: -150px;
+	margin-top: -100px;
+	text-align: center;
+}
+header .title span {
+	position: relative;
+	color: rgba(255,255,255,0.8);
+	font-size: 50px;
+	opacity: 0;
+	text-shadow: 0 0 20px #fff;
+	animation: 3s titleShine ease infinite;
+}
+@keyframes titleShine {
+	0% { text-shadow: 0 0 5px #fff }
+	50% { text-shadow: 0 0 15px #fff }
+	100% { text-shadow: 0 0 5px #fff }
+}
+header nav {
+	position: absolute;
+	top: 50%;
+	margin-top: -125px;
+	left: 20px;
+	display: table;
+}
+header nav ul {
+	position: absolute;
+	left: 5px;
+	top: -180px;
+	width: 100px;
+	height: 100px;
+
+	/*display: block;*/
+}
+header nav li {
+	position: relative;
+	left: -150px;
+	color: #fff;
+	margin-bottom: 33px;
+	width: 98px;
+	height: 36px;
+	background: rgba(105, 105, 105, 0.52);
+	text-align: center;
+	border-radius: 20px;
+	line-height: 36px;
+	/*transform: translateX(-131px);*/
+	/*border: 2px solid rgba(105, 105, 105, 0.52);*/
+}
+header nav li:hover {
+	cursor: pointer;
+	background: rgb(255, 137, 0);
+}
+
+header nav .menu-toggle {
+	display: table;
+}
+header nav .menu-toggle:hover {
+	cursor: pointer;
+}
+header .menu-toggle svg {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+header .menu-toggle path {
+  fill: none;
+  -webkit-transition: stroke-dashoffset 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25), stroke-dasharray 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25);
+  -moz-transition: stroke-dashoffset 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25), stroke-dasharray 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25);
+  -o-transition: stroke-dashoffset 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25), stroke-dasharray 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25);
+  -ms-transition: stroke-dashoffset 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25), stroke-dasharray 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25);
+  transition: stroke-dashoffset 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25), stroke-dasharray 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25);
+  stroke-width: 40px;
+  stroke-linecap: round;
+  stroke: rgba(255,255,255,0.8);
+  stroke-dashoffset: 0px;
+}
+
+/*header .menu-toggle:hover path{
+	stroke: rgb(255, 137, 0);
+}*/
+header .menu-toggle path#top,
+header .menu-toggle path#bottom {
+  stroke-dasharray: 240px 950px;
+}
+header .menu-toggle path#middle {
+  stroke-dasharray: 240px 240px;
+}
+header .cross path#top,
+header .cross path#bottom {
+  stroke-dashoffset: -650px;
+  stroke-dashoffset: -650px;
+}
+header .cross path#middle {
+  stroke-dashoffset: -115px;
+  stroke-dasharray: 1px 220px;
+  /*opacity: 0;*/
+}
+
+header .arrow {
+	position: absolute;
+	left: 50%;
+	margin-left: -35px;
+	bottom: 210px;
+	width: 50px;
+	height: 50px;
+	animation: 4s arrowAnimate infinite;
+}
+@keyframes arrowAnimate {
+	0% { transform: translateY(0) }
+	25% { transform: translateY(25px); }
+	50% { transform: translateY(5px); }
+	75% { transform: translateY(40px) rotateY(0deg) ; }
+	100% { transform: translateY(0) rotateY(540deg) }
+}
+header .arrow .icon {
+	color: #c5c5c5;
+	width: 50px;
+	height: 50px;
+	transform: rotate(90deg);
+}
+header .arrow .icon:hover {
+	cursor: pointer;
+	color: rgb(255, 137, 0);
+}
+/************Banner End***************/
+/************Intro Start***************/
+.intro {
+	width: 100%;
+	height: 570px;
+	background: #ff630c;
+}
+
+/************Intro End***************/
+/************Tree Start***************/
+.tree {
+	width: 100%;
+	height: 705px;
+	background: #f00;
+}
+
+/************Tree End***************/
+/************Slogan Start***************/
+.slogan {
+	width: 100%;
+	height: 300px;
+	background: #ff0;
+}
+
+/************Slogan End***************/
+/************Map Start***************/
+.map {
+	width: 100%;
+	height: 600px;
+	background: #0f0;
+}
+
+/************Map End***************/
+/************Footer Start***************/
+footer {
+	width: 100%;
+	height: 150px;
+	background: #00f;
+}
+/************Footer End***************/

@@ -1,14 +1,12 @@
-##### Hello FFM!
+# Welcome to my personal blog!
 
-###Welcome to my personal blog!
+## I AM FLERMING</strong>
 
-<strong>I AM FLERMING</strong>
+### #I'd glad to share my blog with all you guys.
 
-# I'd glad to share my blog with all you guys.
+### #Hope that my blog can do a little help for you.
 
-# Hope that my blog can do a little help for you.
-
-# I would be appreciated if they really do.
+### #I would be appreciated if they really do.
 
 
 >blog link: http://www.fengfuming.com
