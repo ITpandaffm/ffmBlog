@@ -2,13 +2,14 @@
 .container {
 	width: 100%;
 	height: 100%;
+	min-height: 400px;
 }
 
 /************Banner Start***************/
 header {
 	position: relative;
 	width: 100%;
-	height: 947px;
+	height: 100%;
 	background-image: url('../image/homepage/background.jpeg');
 	background-size: cover;
 }
@@ -25,10 +26,16 @@ header .title {
 header .title span {
 	position: relative;
 	color: rgba(255,255,255,0.8);
-	font-size: 50px;
+	font-size: 60px;
 	opacity: 0;
 	text-shadow: 0 0 20px #fff;
 	animation: 3s titleShine ease infinite;
+}
+header .title p {
+	margin-top: 30px;
+	font-size: 20px;
+	color: #ccc;
+	opacity: 0;
 }
 @keyframes titleShine {
 	0% { text-shadow: 0 0 5px #fff }
@@ -36,9 +43,10 @@ header .title span {
 	100% { text-shadow: 0 0 5px #fff }
 }
 header nav {
-	position: absolute;
+	position: fixed;
+	z-index: 1;
 	top: 50%;
-	margin-top: -125px;
+	margin-top: -50px;
 	left: 20px;
 	display: table;
 }
@@ -48,8 +56,6 @@ header nav ul {
 	top: -180px;
 	width: 100px;
 	height: 100px;
-
-	/*display: block;*/
 }
 header nav li {
 	position: relative;
@@ -124,7 +130,7 @@ header .arrow {
 	position: absolute;
 	left: 50%;
 	margin-left: -35px;
-	bottom: 210px;
+	bottom: 15%;
 	width: 50px;
 	height: 50px;
 	animation: 4s arrowAnimate infinite;
@@ -151,80 +157,207 @@ header .arrow .icon:hover {
 .intro {
 	position: relative;
 	width: 100%;
-	height: 570px;
+	height: 700px;
 	background: #000;
-	padding: 20px 0;
+	padding: 10px 0;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	background-image: url('../image/homepage/treeBackground.jpg');
+	/*background-image: url('../image/homepage/background.jpeg');*/
+
 	background-repeat: no-repeat;
 	background-size: cover;
 }
 .intro .intro-wrapper {
-	width: 90%;
-	height: 100%;
+	width: 70%;
 	margin: 0 auto;
-	background: rgba(43, 41, 41, 0.5);
+	/*background: rgba(43, 41, 41, 0.5);*/
 	border-radius: 20px;
 	overflow: hidden;
+}
+
+.intro-title {
+	margin-top: 50px;
+	text-align: center;
+	/*font-family: 'IBM 3270';*/
+	height: 120px;
+	line-height: 120px;
+	margin-bottom: 20px;
+}
+.intro-title span {
+	font-size: 80px;
+	color: #fff;
+	text-shadow: 0 0 17px #fff;
+}
+
+.intro-content {
 	display: flex;
 	justify-content: space-around;
+	margin: 0 auto;
 }
-
-.intro-left {
-	background: #f00;
-	flex-grow: 1;
-}
-.intro-left ul {
+.intro-content-item {
+	flex-basis: 230px;
+	border-radius: 20px;
+	height: 450px;	
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	overflow: hidden;
 }
-.intro-left {
-	background: #0f0;
-	/*margin: 5px;*/
+.intro-cont-item-title {
+	text-align: center;
+	line-height: 180px;
+	flex-basis: 180px;
+	border-radius: 50%;
+	font-size: 25px;
+	color: rgba(181, 181, 181, 0.9);
+	font-size: 100px;
 }
-.intro-middle {
-	flex-basis: 20px;
-	border-radius: 25px;
-	background: #ccc;
-}
-.intro-right {
-	background: #00f;
+.intro-cont-item-content {
+	font-size: 16px;
+	color: #fff;
+	/*background: rgba(244,244,244,.3);*/
+	padding-left: 4px;
+	padding-left: 8px;
 	flex-grow: 1;
-
 }
-
-
+.intro-cont-item-content h1 {
+	text-align: center;
+	font-size: 30px;
+	margin-top: -20px;
+	margin-bottom: 40px;
+	color: #ccc;
+}
+.intro-cont-item-content p {
+	margin-left: 30px;
+}
 /************Intro End***************/
-/************Tree Start***************/
-.tree {
+/***life*********Map Start***************/
+.life {
 	width: 100%;
-	height: 705px;
-	background: #f00;
+	height: 740px;
+	background-image: url(../image/homepage/mapBackground.jpg);
+	/*background-image: url('../image/homepage/background.jpeg');*/
+
+	background-size: cover;
+}
+.life-wrapper {
+	padding-top: 40px;
+	width: 70%;
+	height: 90%;
+	margin: 0 auto;
+	text-align: center;
+}
+.life-wrapper span {
+	font-size: 50px;
+	color: #fff;
+	text-shadow: 0 0 10px #fff;
+}
+.life-pic-container {
+	position: relative;
+	margin-top: 30px;
+	background: rgba(255,255,255,.18);
+	height: 75%;
+	padding-top: 40px;
+	overflow: hidden;
+
+}
+.life-pic {
+	position: relative;
+	opacity: 1;
+	width: 80%;
+	height: 80%;
+	border: 2px solid #ccc;
+	margin: 0 auto;
+	margin-bottom: 25px;
+	background: rgba(255,255,255,.8);
+}
+.life-pic img {
+	width: 100%;
+	height: 100%;
+}
+.life-pic-container p {
+	position: relative;
+	text-align: right;
+	margin-right: 120px;
+	font-size: 25px;
+	color: #fff;
 }
 
-/************Tree End***************/
+.life-pic span {
+	position: absolute;
+	background-image: url(../image/homepage/pic1.jpeg);
+	/*background-image: url('../image/homepage/background.jpeg');*/
+
+
+	background-repeat: no-repeat;
+	opacity: 0;
+}
+/************Map End***************/
 /************Slogan Start***************/
 .slogan {
+	position: relative;
 	width: 100%;
-	height: 300px;
-	background: #ff0;
+	height: 550px;
+	background-image: url(../image/homepage/sloganBackground.png);
+	/*background-image: url('../image/homepage/background.jpeg');*/
+	
+	background-position: 0 -255px;
+	background-size: cover;
+}
+.slogan-title {
+	padding-top: 50px;
+	text-align: center;
+}
+.slogan span {
+	color: #fff;
+	font-size: 50px;
+	text-shadow: 0 0 13px #fff;
+}
+.slogan-content {
+	width: 80%;
+	height: 60%;
+	margin: 0 auto;
+	margin-top: 60px;
+	text-align: center;
+	/*background: rgba(255,255,255,.5);*/
+}
+.slogan-content p {
+	color: #fff;
+	font-size: 20px;
+	line-height: 40px;
+	text-shadow: 0 0 10px #fff;
 }
 
 /************Slogan End***************/
-/************Map Start***************/
-.map {
-	width: 100%;
-	height: 600px;
-	background: #0f0;
-}
-
-/************Map End***************/
 /************Footer Start***************/
 footer {
 	width: 100%;
-	height: 150px;
-	background: #00f;
+	height: 160px;
+	background: #000;
+	text-align: center;
+	padding-top: 40px;
 }
+footer span {
+	color: #fff;
+	font-size: 30px;
+	line-height: 20px;
+	text-shadow: 0 0 15px #fff;
+}
+.footer-logos {
+	display: flex;
+	width: 60%;
+	margin: 0 auto;
+	padding-top: 30px;
+	justify-content: space-around;
+	/*color: rgba(255,255,255,.8);*/
+	color: #ccc;
+	/*opacity: .8;*/
+	font-size: 60px;
+}
+.footer-logos li:hover {
+	cursor: pointer;
+	color: rgb(255, 137, 0);
+}
+
+
 /************Footer End***************/

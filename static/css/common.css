@@ -43,6 +43,8 @@ body{
 body {
 	position: relative;
     background: #000;
+    /*font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;*/
+    font-family: Open Sans, Tahoma, Arial, Roboto, ”Droid Sans”, ”Helvetica Neue”, ”Droid Sans Fallback”, ”Heiti SC”, ”Hiragino Sans GB”, Simsun, sans-self;
 }
 h1,
 h2,

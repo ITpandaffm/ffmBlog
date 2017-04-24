@@ -1,4 +1,5 @@
 $(function() {
+
     //title Animate
     var aTitleText = $('.title span');
     (function titleSetup() {
@@ -13,6 +14,12 @@ $(function() {
     aTitleText.eq(2).delay(1000);
     titleAnimate(0);
     titleAnimate(2);
+    $('.title p').delay(1800).animate({
+    	opacity: 1
+    }, {
+    	duration: 1000,
+    	easing: 'easeInOutQuad'
+    });
 
     function titleAnimate(index) {
         aTitleText.eq(index).animate({
@@ -24,9 +31,6 @@ $(function() {
             easing: 'easeInOutCubic',
         });
     }
-
-
-
 
     //menu
     var oMenuToggle = $(".menu-toggle");
@@ -54,25 +58,35 @@ $(function() {
 
     //arrow 
     $('.arrow').click(function(event) {
-    	over750Aimate();
+    	arrowAimate();
     });
     var scrollFlag = false;
-
+    var destinTop = $('header').height();
     $(window).on('scroll', function(event) {
     	var nScrollTop = $('body').scrollTop();
-    	if (nScrollTop > 650) {
+    	if (nScrollTop > destinTop-100) {
     		if (!scrollFlag) {
-				over750Aimate();
+				arrowAimate();
     		}
     	} else {
     		scrollFlag = false; 
     	}
     });
-    function over750Aimate (){
-    	$('body').animate({scrollTop: 947}, {
+    function arrowAimate (){
+    	$('body').animate({scrollTop: destinTop}, {
     		duration: 500,
     		easing: 'easeOutCirc'
     	});
     	scrollFlag = true;
     }
+
+    //life pic change
+        var aPigPath = ['image/homepage/pic0.jpeg', 'image/homepage/pic1.jpeg', 'image/homepage/pic2.jpeg', 'image/homepage/pic3.jpeg', 'image/homepage/pic4.png'];
+        var aPigDescrit = ['摄于沈阳 冬 2016-12-26', '摄于北京 春 2017-03-30', '摄于沈阳 冬 2017-12-13', '摄于沈阳 夏 2016-05-03', '摄于天池 秋 2014-10-07'];
+        var nCurPic = 0;
+        $('.life-pic').click(function(event) {
+            nCurPic++;
+             $('.life-pic img').animate({opacity: 0}, { duration: 300 }).attr('src', aPigPath[nCurPic % aPigPath.length]).animate({opacity:1}, { duration: 400});
+             $('.life-pic-container p').animate({opacity: 0}, { duration: 300 }).html(aPigDescrit[nCurPic % aPigDescrit.length]).animate({opacity:1}, { duration: 400});
+        });
 });
