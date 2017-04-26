@@ -75,6 +75,12 @@ header nav li:hover {
 	cursor: pointer;
 	background: rgb(255, 137, 0);
 }
+header nav li a {
+	color: #fff;
+}
+header nav li a:hover {
+	text-decoration: none;
+}
 
 header nav .menu-toggle {
 	display: table;
@@ -162,8 +168,8 @@ header .arrow .icon:hover {
 	padding: 10px 0;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	background-image: url('../image/homepage/treeBackground.jpg');
-	/*background-image: url('../image/homepage/background.jpeg');*/
+	/*background-image: url('../image/homepage/treeBackground.jpg');*/
+	background-image: url('../image/homepage/background.jpeg');
 
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -225,7 +231,7 @@ header .arrow .icon:hover {
 	font-size: 30px;
 	margin-top: -20px;
 	margin-bottom: 40px;
-	color: #ccc;
+	color: #fff;
 }
 .intro-cont-item-content p {
 	margin-left: 30px;
@@ -235,9 +241,8 @@ header .arrow .icon:hover {
 .life {
 	width: 100%;
 	height: 740px;
-	background-image: url(../image/homepage/mapBackground.jpg);
-	/*background-image: url('../image/homepage/background.jpeg');*/
-
+	/*background-image: url(../image/homepage/mapBackground.jpg);*/
+	background-image: url('../image/homepage/background.jpeg');
 	background-size: cover;
 }
 .life-wrapper {
@@ -283,24 +288,14 @@ header .arrow .icon:hover {
 	color: #fff;
 }
 
-.life-pic span {
-	position: absolute;
-	background-image: url(../image/homepage/pic1.jpeg);
-	/*background-image: url('../image/homepage/background.jpeg');*/
-
-
-	background-repeat: no-repeat;
-	opacity: 0;
-}
 /************Map End***************/
 /************Slogan Start***************/
 .slogan {
 	position: relative;
 	width: 100%;
 	height: 550px;
-	background-image: url(../image/homepage/sloganBackground.png);
-	/*background-image: url('../image/homepage/background.jpeg');*/
-	
+	/*background-image: url(../image/homepage/sloganBackground.png);*/
+	background-image: url('../image/homepage/background.jpeg');
 	background-position: 0 -255px;
 	background-size: cover;
 }

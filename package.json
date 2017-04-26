@@ -1,0 +1,29 @@
+{
+  "name": "ffmblog",
+  "version": "1.0.0",
+  "description": "This is my personal blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ITpandaffm/ffmBlog.git"
+  },
+  "keywords": [
+    "blog",
+    "node.js",
+    "javascript",
+    "mongodb"
+  ],
+  "author": "ffm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ITpandaffm/ffmBlog/issues"
+  },
+  "homepage": "https://github.com/ITpandaffm/ffmBlog#readme",
+  "dependencies": {
+    "mongodb": "^2.2.26",
+    "mongoose": "^4.9.6"
+  }
+}

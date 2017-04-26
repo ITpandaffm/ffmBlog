@@ -64,7 +64,7 @@ $(function() {
     var destinTop = $('header').height();
     $(window).on('scroll', function(event) {
     	var nScrollTop = $('body').scrollTop();
-    	if (nScrollTop > destinTop-100) {
+    	if (nScrollTop > destinTop-50) {
     		if (!scrollFlag) {
 				arrowAimate();
     		}
@@ -81,7 +81,7 @@ $(function() {
     }
 
     //life pic change
-        var aPigPath = ['image/homepage/pic0.jpeg', 'image/homepage/pic1.jpeg', 'image/homepage/pic2.jpeg', 'image/homepage/pic3.jpeg', 'image/homepage/pic4.png'];
+        var aPigPath = ['static/image/homepage/pic0.jpeg', 'static/image/homepage/pic1.jpeg', 'static/image/homepage/pic2.jpeg', 'static/image/homepage/pic3.jpeg', 'static/image/homepage/pic4.png'];
         var aPigDescrit = ['摄于沈阳 冬 2016-12-26', '摄于北京 春 2017-03-30', '摄于沈阳 冬 2017-12-13', '摄于沈阳 夏 2016-05-03', '摄于天池 秋 2014-10-07'];
         var nCurPic = 0;
         $('.life-pic').click(function(event) {
