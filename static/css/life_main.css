@@ -1,0 +1,121 @@
+.container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-image: url('../image/homepage/background.jpeg');
+	min-width: 400px;
+	min-height: 400px;	
+}
+
+/************Nav Start***************/
+header {
+	width: 90%;
+	height: 60px;
+	margin: 0 auto;
+	border-bottom: 1px solid #fff;
+	overflow: hidden;
+	background: transparent !important;
+	z-index: 1;
+}
+header .logo {
+	float: left;
+	margin-left: 15px;
+	margin-top: 15px;
+	color: #fff;
+	font-size: 30px;
+	font-weight: 100;
+}
+header .list {
+	float: right;
+	margin-right: 50px;
+	font-size: 20px;
+	margin-top: 18px;
+}
+header .list ul {
+	width: 400px;
+	display: flex;
+	justify-content: space-between;
+}
+header .list li {
+	width: 100px;
+	height: 100%;
+	border: 1px solid rgba(244, 244, 244, .3);
+	/*background:rgba(244, 244, 244, .3);*/
+	margin-right: 10px;
+	text-align: center;
+	border-radius: 5px;
+	line-height: 30px;
+
+}
+
+header .list a {
+	color: #fff;
+	font-size: 17px;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+header .list li:hover {
+    background: rgb(255, 137, 0);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/************Nav End***************/
+
+/************Header Start***************/
+/************header End***************/
+
+/************Main Start***************/
+
+main .slogan {
+	margin-top: 50px;
+	text-align: center;
+}
+main .slogan span {
+	color: #fff;
+	text-align: center;
+	font-size: 30px;
+	text-shadow: 0 0 15px #fff;
+}
+main .v-container {
+	margin-top: 20px;
+	width: 60%;
+	margin-top: 50px;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+}
+
+
+/************Main End***************/
+/************Footer Start***************/
+footer {
+	width: 100%;
+	height: 160px;
+	/*background: rgba(255,255,255,.2);*/
+	text-align: center;
+	margin-top: 60px;
+}
+footer span {
+	
+	color: #fff;
+	font-size: 30px;
+	line-height: 20px;
+	text-shadow: 0 0 15px #fff;
+}
+.footer-logos {
+	display: flex;
+	width: 60%;
+	margin: 0 auto;
+	padding-top: 30px;
+	justify-content: space-around;
+	/*color: rgba(255,255,255,.8);*/
+	color: #ccc;
+	/*opacity: .8;*/
+	font-size: 60px;
+}
+.footer-logos li:hover {
+	cursor: pointer;
+	color: rgb(255, 137, 0);
+}
+/************Footer End***************/
