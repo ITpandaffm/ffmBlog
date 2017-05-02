@@ -9,12 +9,17 @@ function route(pathName, response, request){
     if(contentType){
         //存在相关的文件类型
         //注意此时pathName是/开头的，会到根目录查找，需要在前面加个.，在当前目录中查找
-        fs.stat('.'+pathName, (err, fsstat)=>{
+        var filePath = '.'+pathName;
+        if(contentType === 'text/html'){
+            filePath = './static/html'+pathName;
+        }
+
+        fs.stat(filePath, (err, fsstat)=>{
             if(err){
                 console.log('stat error'+ err);
             } else {
                 if (fsstat.isFile()){
-                    fs.readFile('.'+pathName, (err, data)=>{
+                    fs.readFile(filePath, (err, data)=>{
                         if(err){
                             console.log('read File err'+ err);
                         } else {

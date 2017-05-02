@@ -1,0 +1,250 @@
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+    background-image: url('../image/homepage/background.jpeg');
+    /*background-size: cover;*/
+    background-size: contain;
+}
+
+/************Nav Start***************/
+header {
+	width: 90%;
+	height: 60px;
+	margin: 0 auto;
+	border-bottom: 1px solid #fff;
+	overflow: hidden;
+	background: transparent !important;
+	z-index: 1;
+}
+header .logo {
+	float: left;
+	margin-left: 15px;
+	margin-top: 15px;
+	color: #fff;
+	font-size: 30px;
+	font-weight: 100;
+}
+header .list {
+	float: right;
+	margin-right: 50px;
+	font-size: 20px;
+	margin-top: 18px;
+}
+header .list ul {
+	width: 400px;
+	display: flex;
+	justify-content: space-between;
+}
+header .list li {
+	width: 100px;
+	height: 100%;
+	border: 1px solid rgba(244, 244, 244, .3);
+	/*background:rgba(244, 244, 244, .3);*/
+	margin-right: 10px;
+	text-align: center;
+	border-radius: 5px;
+	line-height: 30px;
+
+}
+
+header .list a {
+	color: #fff;
+	font-size: 17px;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+header .list li:hover {
+    /*background: rgb(255, 137, 0);*/
+    border-color: rgb(255, 137, 0);
+    border-radius: 5px;
+    cursor: pointer;
+}
+header .list li:hover a {
+    color: rgb(255, 137, 0);
+}
+
+/************Nav End***************/
+/************Main Start***************/
+
+main {
+	width: 80%;
+	background: rgba(255,255,255,.15);
+	border-radius: 10px;
+	margin: 0 auto;
+	margin-top: 50px;
+	color: #fff;
+}
+.article {
+	width: 90%;
+	margin: 0 auto;
+}
+.auth span,
+.title span,
+.timestamp span {
+	text-shadow: 0 0 2px #fff;
+}
+.title {
+	padding-top: 20px;
+	font-size: 40px;
+	text-shadow: 0 0 10px #fff;
+	text-align: center;
+}
+
+.tag {
+	border: 1px solid #fff;
+	display: table;
+	padding: 5px;
+	margin: 15px;
+	box-shadow: 0 0 5px #fff;
+}
+.tag:hover {
+	color: rgb(255, 137, 0);
+	border-color: rgb(255, 137, 0);
+	box-shadow: 0 0 5px rgb(255, 137, 0);
+	cursor: pointer;
+}
+.auth {
+	margin-bottom: 5px;
+}
+.timestamp {
+	margin-bottom: 20px;
+}
+
+.content {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.info {
+	display: flex;
+	/*flex-direction: row-reverse;*/
+	justify-content: flex-end;
+	margin: 30px 0;
+	font-size: 20px;
+}
+.info .ring {
+	border-radius: 50%;
+	border:1px solid #fff;
+	text-align: center;
+	height: 80px;
+	line-height: 80px;
+}
+.info .zan {
+	flex-basis: 80px;
+	margin-right: 50px;
+	transition: .2s all ease;
+}
+.info .zan:hover {
+	color: rgb(255, 137, 0);
+	border-color: rgb(255, 137, 0);
+	cursor: pointer;
+}
+
+.info .money {
+	flex-basis: 80px;
+	margin-right: 20px;
+	transition: .2s all ease;
+}
+.info .money:hover {
+	color: rgb(255, 137, 0);
+	border-color: rgb(255, 137, 0);	
+	cursor: pointer;
+}
+
+.write-comment {
+	border: 1px solid #fff;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	transition: .2s all ease;
+}
+.write-comment:hover{
+	cursor: pointer;
+	/*box-shadow: inset 0 0 10px #fff;*/
+	border-color: rgb(255, 137, 0);	
+	color: rgb(255, 137, 0);
+}
+.comment-area {
+	margin-top: 20px;
+	padding-bottom: 30px;
+}
+.comment-area li {
+	margin-bottom: 20px;
+	border: 1px solid #fff;
+	transition: .2s all ease;
+}
+.comment-area li:hover {
+	border-color: rgb(255, 137, 0);	
+	color: rgb(255, 137, 0);
+}
+.comment-area li:hover span{
+	color: rgb(255, 137, 0);
+}
+
+.comment-area .user-info {
+	overflow: hidden;
+	padding-top: 20px;
+}
+.user-info .avatar {
+	width: 60px;
+	height: 60px;
+	float: left;
+	margin: 0 20px;
+	margin-bottom: 20px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.user-info .avatar img {
+	width: 100%;
+	height: 100%;
+}
+
+.user-info h1 {
+	margin-top: 10px;
+}
+.user-info span {
+	text-shadow: none;
+	font-size: 12px;
+	color: #ccc;
+	transition: .2s all ease;
+}
+.comment-content {
+	padding-left: 20px;
+	margin-bottom: 20px;
+}
+/************Main End***************/
+/************Footer Start***************/
+footer {
+	width: 100%;
+	height: 160px;
+	background: #000;
+	text-align: center;
+	padding-top: 40px;
+}
+footer span {
+	color: #fff;
+	font-size: 30px;
+	line-height: 20px;
+	text-shadow: 0 0 15px #fff;
+}
+.footer-logos {
+	display: flex;
+	width: 60%;
+	margin: 0 auto;
+	padding-top: 30px;
+	justify-content: space-around;
+	/*color: rgba(255,255,255,.8);*/
+	color: #ccc;
+	/*opacity: .8;*/
+	font-size: 60px;
+}
+.footer-logos li:hover {
+	cursor: pointer;
+	color: rgb(255, 137, 0);
+}
+
+
+/************Footer End***************/

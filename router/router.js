@@ -1,5 +1,5 @@
-var staticRouter = require('./static_router.js');
-var dynamicRouter = require('./dynamic_router.js');
+const staticRouter = require('./static_router.js');
+const dynamicRouter = require('./dynamic_router.js');
 
 
 function route(pathName, response, request){
