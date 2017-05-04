@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>_FFM_</title>
+    <link rel="shortcut icon" href="static/favicon.ico">
+    <link rel="stylesheet" href="static/css/common.css">
+    <link type="text/css" rel="stylesheet" href="static/css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="static/css/login_main.css">
+</head>
+
+<body>
+    <div class="container-all">
+        <div class="row">
+            <div class="col s6 offset-s3">
+                <div class="wrapper">
+                    <div class="row">
+                        <form action="/signin" class="col s12" method="get">
+                            <div class="input-field col s6 offset-s3 cyan-text lighten-5 center-align">
+                                <h1>Login</h1>
+                            </div>
+                            <div class="input-field col s6 offset-s3 white-text lighten-5">
+                                <input id="icon_prefix" type="text" class="validate" name="username">
+                                <label for="icon_prefix">user name</label>
+                            </div>
+                            <div class="input-field col s6 offset-s3 white-text lighten-5">
+                                <input id="icon_telephone" type="password" class="validate" name="password">
+                                <label for="icon_telephone">password</label>
+                            </div>
+                            <div class="input-field col s6 offset-s3" type="submit">
+                            <button class="btn waves-effect waves-light cyan submit-btn" type="submit" name="action">Submit
+                               <i class="material-icons right">send</i>
+                            </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="static/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="static/js/materialize.min.js"></script>
+    <script src="static/js/login_main.js"></script>
+</body>
+
+</html>

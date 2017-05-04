@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>_FFM_</title>
+    <link rel="shortcut icon" href="static/favicon.ico">
+    <link rel="stylesheet" href="static/css/common.css">
+    <link rel="stylesheet" href="static/css/system_main.css">
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div class="title">
+                <h1>Welcome Back</h1></div>
+            <div class="add">
+                <div class="title">
+                    <h1>增</h1></div>
+                <div class="add-wrapper">
+                    <hr>
+                    <br>
+                    <br>
+                    <form action="/addArticle" method="post">
+                        <label for="j-title">文章标题</label>
+                        <input type="text" placeholder="title" id="j-title" name="title">
+                        <select name="tag" id="j-tag">
+                            <option value="javascript">javascript</option>
+                            <option value="html">html</option>
+                            <option value="css">css</option>
+                            <option value="nodejs">nodejs</option>
+                        </select>
+                        <br>
+                        <br>
+                        <textarea name="content" id="j-content" cols="100" rows="20"></textarea>
+                        <br>
+                        <br>
+                        <input type="submit" value="submit" id="j-add-submit">
+                    </form>
+                    <br>
+                    <br>
+                    <hr>
+                </div>
+            </div>
+            <div class="delete">
+                <div class="title">删</div>
+                <label for="j-deleteId">请输入要删除的文章的id</label>
+                <input type="text" name="deleteId" id="j-deleteId">
+                <input type="submit" value="submit" id="j-delete-btn">
+                <br>
+                <br>
+                <hr>
+                <br>
+                <br>
+            </div>
+            <div class="rewrite">
+                <div class="title">改</div>
+                <label for="j-rewriteId">请输入要修改的文章的id</label>
+                <input type="text" name="rewriteId" id="j-rewriteId">
+                <input type="submit" value="submit" id="j-rewriteId-btn">
+                <br>
+                <br>
+                <hr>
+
+                   <hr>
+                    <br>
+                    <br>
+                    <form action="/rewriteArticle/Done" method="post" id="rewrite-form">
+                        <label for="j-rewrite-title">文章标题</label>
+                        <input type="text" placeholder="title" id="j-rewrite-title" name="title">
+                        <select name="tag" id="j-rewrite-tag">
+                            <option value="javascript">javascript</option>
+                            <option value="html">html</option>
+                            <option value="css">css</option>
+                            <option value="nodejs">nodejs</option>
+                        </select>
+                        <br>
+                        <br>
+                        <textarea name="content" id="j-rewrite-content" cols="100" rows="20"></textarea>
+                        <br>
+                        <br>
+                        <input type="submit" value="submit" id="j-rewrite-submit">
+                    </form>
+                    <br>
+                    <br>
+                    <hr>
+
+
+
+            </div>
+            <div class="content">
+                <div class="title">
+                    <h1>查</h1></div>
+                <div class="content-nav">
+                    <ul>
+                        <li class="active">全部</li>
+                        <li>Html</li>
+                        <li>Css</li>
+                        <li>Javascript</li>
+                        <li>node.js</li>
+                    </ul>
+                </div>
+                <div class="content-main">
+                    <div class="content-article">
+                        <ul>
+                        </ul>
+                    </div>
+                    <div class="content-pagination">
+                        <ul>
+                            <li class="active">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                            <li>5</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="static/js/jquery-1.12.4.js"></script>
+    <script src="static/js/system_main.js"></script>
+</body>
+
+</html>

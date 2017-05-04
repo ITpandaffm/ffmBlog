@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/ITpandaffm/ffmBlog#readme",
   "dependencies": {
+    "github-markdown-css": "^2.6.0",
+    "marked": "^0.3.6",
     "mongodb": "^2.2.26",
     "mongoose": "^4.9.6"
   }
