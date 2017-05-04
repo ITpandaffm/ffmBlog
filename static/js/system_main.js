@@ -36,7 +36,7 @@ $(function () {
                 type: "POST",
                 dataType: "text",
                 success: function (data) {
-                    console.log(data);
+                    alert(data);
                     // eval(data);
                     $('#j-title').val('');
                     $('#j-content').val('');
@@ -56,6 +56,7 @@ $(function () {
             console.log(deleteId);
             $.get('/deleteArticle', { deleteId: deleteId }, function (data) {
                 alert(data);
+                 $('#j-deleteId').val('');
             });
         } else {
             alert('未填id');

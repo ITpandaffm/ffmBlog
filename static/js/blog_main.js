@@ -30,6 +30,8 @@ $(function () {
 });
 
 function getAticle(tag, page) {
+
+    //获取文章列表
     $.get('/blog/articleList', { tag: tag, page: page }, function (data) {
 
         //清空父节点
@@ -41,6 +43,15 @@ function getAticle(tag, page) {
             var curData = aData[i];
             var oLi = $('<li></li>');
             var articleId = curData._id;
+
+            //获取评论数
+            var commentCount = 0;
+            $.get('/getCommentCount', { articleId: articleId, num:i} ,function(data){
+                commentCount = data.commentArr;
+                console.log( 'commentCount: ',commentCount);
+                $('.info-comment span').eq(data.num).html(` (${commentCount}) `);
+            });
+
             oLi.attr('class', 'article');
             oLi.attr('id', articleId);
             oLi.html(`
@@ -72,7 +83,7 @@ function getAticle(tag, page) {
                                 <div class="info-comment">
                                     <svg class="icon" aria-hidden="true">
                                         <use xlink:href="#icon-comment"></use>
-                                    </svg><span> (20192)</span>
+                                    </svg><span> (${commentCount})</span>
                                 </div>
                             </div>
 			`);

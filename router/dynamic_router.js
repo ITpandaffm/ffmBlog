@@ -17,6 +17,7 @@ function route(pathName, response, request) {
                     console.log('connecnt error ', err);
                     return false;
                 }
+
                 console.log('mongo connected');
                 //判断参数
                 var page = reqPara.page;
@@ -26,6 +27,7 @@ function route(pathName, response, request) {
                 }
 
                 var articleCollection = db.collection('article');
+
                 articleCollection.find(tag).limit(4).skip((page - 1) * 4).toArray(function (err, docs) {
                     if (err) {
                         console.log('find error', err);
@@ -229,10 +231,59 @@ function route(pathName, response, request) {
 
             });
             break;
+        case '/getComment':
+            MongoClient.connect('mongodb://ffmblogAdmin:ffmblogAdmin@127.0.0.1:27017/blog', (err, db) => {
+                if (err) {
+                    console.log('connecnt error ', err);
+                    return false;
+                }
+                console.log('mongo connected');
+                var commentCollection = db.collection('comment');
+            // var commentArticleId = mongoose.Types.ObjectId(reqPara.articleId);  //此处不需要转化，因为已经转化，不是主键，只是找同一篇文章的所有评论
+                var commentArticleId = reqPara.articleId;
+
+                commentCollection.find({article_id: commentArticleId}).toArray(function (err, docs) {
+                    if (err) {
+                        console.log('getComment find error', err);
+                    }
+                    console.log(docs);
+                    var returnCommentCountData = { commentArr:docs };
+                    response.writeHead(200, { 'Content-Type': 'text/json' });
+                    response.end(JSON.stringify(returnCommentCountData), 'utf-8');
+                    console.log('close db');
+                    db.close();
+                });
+
+            });
+            break;
+            case '/getCommentCount':
+            MongoClient.connect('mongodb://ffmblogAdmin:ffmblogAdmin@127.0.0.1:27017/blog', (err, db) => {
+                if (err) {
+                    console.log('connecnt error ', err);
+                    return false;
+                }
+                console.log('mongo connected');
+                var commentCollection = db.collection('comment');
+                var commentCountArticleId = reqPara.articleId;
+
+                commentCollection.find({article_id: commentCountArticleId}).toArray(function (err, docs) {
+                    if (err) {
+                        console.log('getComment find error', err);
+                    }
+
+                    var returnCommentData = { commentArr:docs.length, num: reqPara.num };
+                    response.writeHead(200, { 'Content-Type': 'text/json' });
+                    response.end(JSON.stringify(returnCommentData), 'utf-8');
+                    console.log('close db');
+                    db.close();
+                });
+
+            });                
+                break;
         default:
             console.log('default');
     }
-
+    
 }
 
 exports.route = route;

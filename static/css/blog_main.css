@@ -156,7 +156,6 @@
     width: 90%;
     margin: 0 auto;
     height: 90%;
-    padding-top: 10px;
 }
 
 .content-article ul li {
@@ -166,6 +165,7 @@
     border-radius: 10px;
     margin-top: 23px;
     background: rgba(255, 255, 255, .2);
+    border: 1px solid #ccc;
 }
 
 .article {
@@ -196,6 +196,8 @@
     padding-top: 10px;
     padding-left: 20px;
     flex-grow: 1;
+    flex-basis: 25px;
+    overflow: hidden;
 }
 
 .article .content .content-text {

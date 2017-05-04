@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>_FFM_</title>
     <link rel="shortcut icon" href="static/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="static/css/materialize.min.css" media="screen,projection" />
     <link rel="stylesheet" href="static/css/common.css">
     <link rel="stylesheet" href="static/css/article_main.css">
     <style type="text/css">
@@ -46,7 +47,7 @@
                     <div class="write-comment">写点什么吧。。。</div>
                     <div class="comment-area">
                         <ul>
-                            <li>
+                            <!--<li>
                                 <div class="user-info">
                                     <div class="avatar"><img src="static/image/avatar.jpeg" alt=""></div>
                                     <h1>挨踢小熊猫</h1>
@@ -55,27 +56,7 @@
                                 <div class="comment-content">
                                     好多评论历史记录分竞速开发里是否是 好多评论历史记录分竞速开发里是否是好多评论历史记录分竞速开发里是否是 好多评论历史记录分竞速开发里是否是
                                 </div>
-                            </li>
-                            <li>
-                                <div class="user-info">
-                                    <div class="avatar"><img src="static/image/avatar.jpeg" alt=""></div>
-                                    <h1>挨踢小熊猫</h1>
-                                    <span>2014-04-11</span>
-                                </div>
-                                <div class="comment-content">
-                                    好多评论历史记录分竞速开发里是否是 好多评论历史记录分竞速开发里是否是好多评论历史记录分竞速开发里是否是 好多评论历史记录分竞速开发里是否是
-                                </div>
-                            </li>
-                            <li>
-                                <div class="user-info">
-                                    <div class="avatar"><img src="static/image/avatar.jpeg" alt=""></div>
-                                    <h1>挨踢小熊猫</h1>
-                                    <span>2014-04-11</span>
-                                </div>
-                                <div class="comment-content">
-                                    好多评论历史记录分竞速开发里是否是 好多评论历史记录分竞速开发里是否是好多评论历史记录分竞速开发里是否是 好多评论历史记录分竞速开发里是否是
-                                </div>
-                            </li>
+                            </li>-->
                         </ul>
                     </div>
                 </div>
@@ -118,11 +99,41 @@
                 </ul>
             </div>
         </footer>
+    </div>
+    <div class="mask">
+        <div class="login">
+            <div class="row">
+                <form action="/signin" class="col s12" method="get">
+                    <div class="input-field col s6 offset-s3 cyan-text lighten-5 center-align">
+                        <h1>Login</h1>
+                    </div>
 
+                    <div class="row">
+                        <div class="input-field col s6 offset-s3 white-text lighten-5">
+                            <input id="icon_prefix" type="text" class="validate" name="username">
+                            <label for="icon_prefix">user name</label>
+                        </div>
+                        <div class="input-field col s6 offset-s3 white-text lighten-5">
+                            <input id="icon_telephone" type="password" class="validate" name="password">
+                            <label for="icon_telephone">password</label>
+                        </div>
+                        <div class="row">
+                        <div class="input-field col s2 offset-s5" type="submit">
+                            <button class="btn waves-effect waves-light cyan submit-btn" type="submit" name="action">注册</button>
+                        </div>
+                        <div class="input-field col s2" type="submit">
+                            <button class="btn waves-effect waves-light cyan submit-btn" type="submit" name="action">登录</button>
+                        </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
     <script type="text/javascript" src="static/js/jquery-1.12.4.js"></script>
     <script src="static/js/iconfont.js"></script>
-     <script src="static/js/article_main.js"></script> 
+    <script src="static/js/article_main.js"></script>
+    <script type="text/javascript" src="static/js/materialize.min.js"></script>
 </body>
 
 </html>

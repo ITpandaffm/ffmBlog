@@ -1,7 +1,4 @@
 
-
-
-
 var mime = {
     ".jpeg": "image/jpeg",
     ".mp4": "video/mp4",
@@ -24,7 +21,6 @@ var mime = {
     ".ogg": "application/ogg",
     ".pdf": "application/pdf",
     ".png": "image/png",
-
 };
 
 exports.mime = mime;
