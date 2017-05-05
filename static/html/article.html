@@ -8,6 +8,7 @@
     <link type="text/css" rel="stylesheet" href="static/css/materialize.min.css" media="screen,projection" />
     <link rel="stylesheet" href="static/css/common.css">
     <link rel="stylesheet" href="static/css/article_main.css">
+    <link rel="stylesheet" href="static/css/prism.css">
     <style type="text/css">
     .icon {
         width: 1em;
@@ -107,23 +108,91 @@
                     <div class="input-field col s6 offset-s3 cyan-text lighten-5 center-align">
                         <h1>Login</h1>
                     </div>
-
                     <div class="row">
                         <div class="input-field col s6 offset-s3 white-text lighten-5">
-                            <input id="icon_prefix" type="text" class="validate" name="username">
-                            <label for="icon_prefix">user name</label>
+                            <input id="signin-prefix" type="text" class="validate" name="username">
+                            <label for="signin-prefix">user name</label>
                         </div>
                         <div class="input-field col s6 offset-s3 white-text lighten-5">
-                            <input id="icon_telephone" type="password" class="validate" name="password">
-                            <label for="icon_telephone">password</label>
+                            <input id="signin-password" type="password" class="validate" name="password">
+                            <label for="signin-password">password</label>
                         </div>
                         <div class="row">
-                        <div class="input-field col s2 offset-s5" type="submit">
-                            <button class="btn waves-effect waves-light cyan submit-btn" type="submit" name="action">注册</button>
+                            <div class="input-field col s2 offset-s5" type="submit">
+                                <button class="btn waves-effect waves-light cyan submit-btn" type="submit" name="action" id="j-s-register-btn">注册</button>
+                            </div>
+                            <div class="input-field col s2" type="submit">
+                                <button class="btn waves-effect waves-light cyan submit-btn" type="submit" name="action" id="j-s-signin-btn">登录</button>
+                            </div>
+                            <div class="signin-preload col s3 offset-s7">
+                                <div class="preloader-wrapper active">
+                                    <div class="spinner-layer spinner-blue-only">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="input-field col s2" type="submit">
-                            <button class="btn waves-effect waves-light cyan submit-btn" type="submit" name="action">登录</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="register">
+            <div class="row">
+                <form action="/register" class="col s12" method="get">
+                    <div class="input-field col s6 offset-s3 cyan-text lighten-5 center-align">
+                        <h1>Register</h1>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6 offset-s3 white-text lighten-5">
+                            <input id="register-username" type="text" class="validate" name="username">
+                            <label for="register-username">Name</label>
                         </div>
+                        <div class="input-field col s6 offset-s3 white-text lighten-5">
+                            <input id="register-password" type="password" class="validate" name="password">
+                            <label for="register-password">Password</label>
+                        </div>
+                        <!--                         <div class="input-field col s6 offset-s3 white-text lighten-5">
+                            <input id="register-confirmpwa" type="password" class="validate" name="password">
+                            <label for="register-confirmpwa">confirm password</label>
+                        </div> -->
+                        <div class="input-field col s6 offset-s3 white-text lighten-5">
+                            <input id="telephone" type="text" class="validate" name="username">
+                            <label for="telephone">Telephone</label>
+                        </div>
+                        <div class="input-field col s6 offset-s3 white-text lighten-5">
+                            <input id="email" type="email" class="validate">
+                            <label for="email" data-error="wrong" data-success="right">Email</label>
+                        </div>Ï
+                        <div class="row">
+                            <div class="input-field col s2 offset-s5" type="submit">
+                                <button class="btn waves-effect waves-light cyan submit-btn" type="submit" name="action" id="j-r-register-btn">注册</button>
+                            </div>
+                            <div class="input-field col s2" type="submit">
+                                <button class="btn waves-effect waves-light cyan submit-btn" type="submit" name="action" id="j-r-signin-btn">登录</button>
+                            </div>
+                            <div class="signin-preload col s3 offset-s7">
+                                <div class="preloader-wrapper active">
+                                    <div class="spinner-layer spinner-blue-only">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -134,6 +203,7 @@
     <script src="static/js/iconfont.js"></script>
     <script src="static/js/article_main.js"></script>
     <script type="text/javascript" src="static/js/materialize.min.js"></script>
+    <script src="static/js/prism.js"></script>
 </body>
 
 </html>

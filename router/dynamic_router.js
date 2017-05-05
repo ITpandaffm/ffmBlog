@@ -270,7 +270,7 @@ function route(pathName, response, request) {
                     if (err) {
                         console.log('getComment find error', err);
                     }
-
+                    
                     var returnCommentData = { commentArr:docs.length, num: reqPara.num };
                     response.writeHead(200, { 'Content-Type': 'text/json' });
                     response.end(JSON.stringify(returnCommentData), 'utf-8');

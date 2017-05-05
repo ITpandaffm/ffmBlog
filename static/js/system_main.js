@@ -1,5 +1,22 @@
 $(function () {
 
+    showMask();
+    $('#j-s-signin-btn').on('click', function(event) {
+        event.preventDefault();
+        var data = $('form').serialize();
+            $('.signin-preload').show();
+        $.get('/signin?'+data, function(status){
+            if(status ==='success'){
+                hideMask();
+                $('#material').remove();    //框架引入只是因为登录框用而已 既然登录成功就去掉 不然还影响了原来的布局。
+            } else {
+                alert('wrong！');
+            }
+            $('.signin-preload').hide();
+
+        }, 'text');
+    });
+
     //页面加载完成向服务器请求文章显示
     getAticle('all', 1);
 
@@ -56,7 +73,7 @@ $(function () {
             console.log(deleteId);
             $.get('/deleteArticle', { deleteId: deleteId }, function (data) {
                 alert(data);
-                 $('#j-deleteId').val('');
+                $('#j-deleteId').val('');
             });
         } else {
             alert('未填id');
@@ -174,3 +191,29 @@ function getCurTag() {
     return tag;
 }
 
+function showMask () {
+    $('.mask').css({
+            height: $(window).height(),
+            width: $(window).width(),
+            top: $(window).scrollTop() + 'px',
+            dispaly: 'flex'
+        });
+    $('body').css('overflow','hidden'); //以此达到页面不可以滚动
+    $('.signin-preload').hide();
+}
+
+function maskResize() {
+    $('.mask').css({
+        height: $(window).height(),
+        width: $(window).width(),
+        top: $(window).scrollTop() + 'px',
+    });
+}
+
+function hideMask(){
+    $('body').css('overflow', 'visible');
+    $(window).off('resize', maskResize);   
+    $('.mask').css('width', 0+'px');   
+    $('.signin-preload').hide();
+    $(document).off('click', hideMask);
+}

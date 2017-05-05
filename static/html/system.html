@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>_FFM_</title>
+    <link id="material" type="text/css" rel="stylesheet" href="static/css/materialize.min.css" media="screen,projection" />
     <link rel="shortcut icon" href="static/favicon.ico">
     <link rel="stylesheet" href="static/css/common.css">
     <link rel="stylesheet" href="static/css/system_main.css">
@@ -119,8 +120,50 @@
             </div>
         </div>
     </div>
+    <div class="mask">
+        <div class="login">
+            <div class="row">
+                <form action="/signin" class="col s12" method="get">
+                    <div class="input-field col s6 offset-s3 cyan-text lighten-5 center-align">
+                        <h1>Login</h1>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6 offset-s3 white-text lighten-5">
+                            <input id="signin-prefix" type="text" class="validate" name="username">
+                            <label for="signin-prefix">user name</label>
+                        </div>
+                        <div class="input-field col s6 offset-s3 white-text lighten-5">
+                            <input id="signin-password" type="password" class="validate" name="password">
+                            <label for="signin-password">password</label>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s2 offset-s7" type="submit">
+                                <button class="btn waves-effect waves-light cyan submit-btn" type="submit" name="action" id="j-s-signin-btn">登录</button>
+                            </div>
+                            <div class="signin-preload col s3 offset-s7">
+                                <div class="preloader-wrapper active">
+                                    <div class="spinner-layer spinner-blue-only">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     <script src="static/js/jquery-1.12.4.js"></script>
     <script src="static/js/system_main.js"></script>
+    <script type="text/javascript" src="static/js/materialize.min.js">
+    </script>
 </body>
 
 </html>

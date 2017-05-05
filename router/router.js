@@ -28,7 +28,14 @@ function route(pathName, response, request){
             case '/login':   
                 pathName = pathName + '.html';
                 staticRouter.route(pathName, response, request);      
-                break;            
+                break;      
+            case '/system':
+                //阻止直接登入
+
+                pathName = '/login' + '.html';
+                console.log(pathName);
+                staticRouter.route(pathName, response, request);
+                break;                            
             default:
                 response.writeHead(404, {'Content-type':'text/plain'});
                 response.write('404 not found!');
@@ -46,6 +53,7 @@ function isPage(pathName){
         case '/life':
         case '/article':
         case '/login':
+        case '/system':
             return true;
         default:
             return false;

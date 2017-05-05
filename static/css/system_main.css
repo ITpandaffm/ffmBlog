@@ -185,3 +185,47 @@
 
 
 /************Content End***************/
+/************Mask Start***************/
+
+.mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    z-index: 2;
+    background: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login {
+    position: relative;
+    width: 60%;
+    height: 80%;
+    background: rgba(0, 0,0, .8);
+    /*display: none;*/
+}
+.login h1 {
+    font-size: 80px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+/*.login .login-head {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    background: #ccc;
+    box-shadow: inset 0 0 50px #777;
+}*/
+
+.signin-preload {
+    margin-top: 40px;
+    display: none;
+}
+
+/************Mask End***************/
