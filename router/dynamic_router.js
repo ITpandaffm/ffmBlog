@@ -73,16 +73,53 @@ function route(pathName, response, request) {
 
             break;
         case '/signin':
+            //由于异步问题 代码很冗杂。
             console.log(reqPara);
-            if (reqPara.username === 'ffm' && reqPara.password === 'ffm') {
+            // var result = singinConfirm(reqPara.username, reqPara.password);
+            var username = reqPara.username;
+            var password = reqPara.password
+            // var result = false;
+            if (username === 'ffm' && password === 'ffm') {
                 //管理员登录
+                // return true;
                 response.writeHead(200, { 'Content-type': 'text/plain' });
                 response.end('success');
             } else {
-                //用户密码错误
-                response.writeHead(200, { 'Content-type': 'text/plain' });
-                response.end('wrong');
+                //普通用户登录，链接数据库查询user表
+                MongoClient.connect('mongodb://ffmblogAdmin:ffmblogAdmin@127.0.0.1:27017/blog', (err, db) => {
+                    if (err) {
+                        console.log('connecnt error ', err);
+                        response.writeHead(200, { 'Content-type': 'text/plain' });
+                        response.end('wrong');
+                    }
+                    console.log('mongo connected');
+                    var userCollection = db.collection('user');
+                    userCollection.find({ name: username, password: password }).toArray(function (err, usersArr) {
+                        if (err) {
+                            console.log('find user error', err);
+                        }
+                        console.log(usersArr);
+                        if (usersArr.length) {
+                            //返回数组长度大于0 说明存在
+                            response.writeHead(200, { 'Content-type': 'text/plain' });
+                            response.end('success');
+                        } else {
+                            response.writeHead(200, { 'Content-type': 'text/plain' });
+                            response.end('wrong');
+                        }
+                        console.log('close db');
+                        db.close();
+                    });
+                });
             }
+            // if (result) {
+            //     response.writeHead(200, { 'Content-type': 'text/plain' });
+            //     response.end('success');
+            // } else {
+            //     //用户密码错误
+            //     response.writeHead(200, { 'Content-type': 'text/plain' });
+            //     response.end('wrong');
+            // }
             break;
         case '/addArticle':
 
@@ -239,15 +276,15 @@ function route(pathName, response, request) {
                 }
                 console.log('mongo connected');
                 var commentCollection = db.collection('comment');
-            // var commentArticleId = mongoose.Types.ObjectId(reqPara.articleId);  //此处不需要转化，因为已经转化，不是主键，只是找同一篇文章的所有评论
+                // var commentArticleId = mongoose.Types.ObjectId(reqPara.articleId);  //此处不需要转化，因为已经转化，不是主键，只是找同一篇文章的所有评论
                 var commentArticleId = reqPara.articleId;
 
-                commentCollection.find({article_id: commentArticleId}).toArray(function (err, docs) {
+                commentCollection.find({ article_id: commentArticleId }).toArray(function (err, docs) {
                     if (err) {
                         console.log('getComment find error', err);
                     }
                     console.log(docs);
-                    var returnCommentCountData = { commentArr:docs };
+                    var returnCommentCountData = { commentArr: docs };
                     response.writeHead(200, { 'Content-Type': 'text/json' });
                     response.end(JSON.stringify(returnCommentCountData), 'utf-8');
                     console.log('close db');
@@ -256,7 +293,7 @@ function route(pathName, response, request) {
 
             });
             break;
-            case '/getCommentCount':
+        case '/getCommentCount':
             MongoClient.connect('mongodb://ffmblogAdmin:ffmblogAdmin@127.0.0.1:27017/blog', (err, db) => {
                 if (err) {
                     console.log('connecnt error ', err);
@@ -266,25 +303,130 @@ function route(pathName, response, request) {
                 var commentCollection = db.collection('comment');
                 var commentCountArticleId = reqPara.articleId;
 
-                commentCollection.find({article_id: commentCountArticleId}).toArray(function (err, docs) {
+                commentCollection.find({ article_id: commentCountArticleId }).toArray(function (err, docs) {
                     if (err) {
                         console.log('getComment find error', err);
                     }
-                    
-                    var returnCommentData = { commentArr:docs.length, num: reqPara.num };
+
+                    var returnCommentData = { commentArrCount: docs.length, num: reqPara.num };
                     response.writeHead(200, { 'Content-Type': 'text/json' });
                     response.end(JSON.stringify(returnCommentData), 'utf-8');
                     console.log('close db');
                     db.close();
                 });
 
-            });                
-                break;
+            });
+            break;
+        case '/pushNewComment':
+            //提交新评论
+            MongoClient.connect('mongodb://ffmblogAdmin:ffmblogAdmin@127.0.0.1:27017/blog', (err, db) => {
+                if (err) {
+                    console.log('connecnt error ', err);
+                    return false;
+                }
+                console.log('mongo here');
+                if (request.method === 'POST') {
+                    var postData = '';
+                    request.on('data', (data) => {
+                        postData += data;
+                    });
+                    request.on('end', () => {
+                        insertNewComment(postData, db, response);
+                    });
+                }
+            });
+            break;
+        case '/registerNewUser':
+            //注册新用户
+            MongoClient.connect('mongodb://ffmblogAdmin:ffmblogAdmin@127.0.0.1:27017/blog', (err, db) => {
+                if (err) {
+                    console.log('connecnt error ', err);
+                    response.writeHead(200, { 'Content-type': 'text/plain' });
+                    response.end('wrong');
+                }
+                console.log('mongo here');
+                var newUser = {
+                    username: reqPara.username,
+                    password: reqPara.password,
+                    telephone: reqPara.telephone,
+                    email: reqPara.email
+                };
+                var userCollection = db.collection('user');
+                userCollection.insert(newUser, (err, result) => {
+                    if (err) {
+                        console.log('insert error', err);
+                    }
+                    console.log('insert result', result);
+                    response.writeHead(200, { 'Content-Type': 'text/plain' });
+                    response.end('success');
+                    console.log('close db');
+                    db.close();
+                });
+            });
         default:
             console.log('default');
     }
-    
+
 }
+
+//登录验证
+function signinConfirm(username, pwd) {
+    if (username === 'ffm' && pwd === 'ffm') {
+        //管理员登录
+        return true;
+    } else {
+        //普通用户登录，链接数据库查询user表
+        MongoClient.connect('mongodb://ffmblogAdmin:ffmblogAdmin@127.0.0.1:27017/blog', (err, db) => {
+            if (err) {
+                console.log('connecnt error ', err);
+                return false;
+            }
+            debugger;
+            console.log('mongo connected');
+            var userCollection = db.collection('user');
+            userCollection.find({ name: username, password: pwd }).toArray(function (err, usersArr) {
+                if (err) {
+                    console.log('find user error', err);
+                    console.log('close db');
+                    db.close();
+                    return false;
+                }
+                console.log(usersArr);
+                console.log('close db');
+                db.close();
+                return true;
+            });
+        });
+    }
+}
+
+//插入评论
+function insertNewComment(postData, db, response) {
+    var commentCollection = db.collection('comment');
+    var postData = querystring.parse(postData);
+
+    commentCollection.insert({
+        article_id: postData.articleId,
+        user_name: postData.currentUser,
+        avatar_path: 'static/image/avatar.jpeg',
+        timestamp: new Date(),
+        content: postData.content
+    }, (err, result) => {
+        if (err) {
+            console.log('insert New comment error:', err);
+            response.writeHead(200, { 'Content-Type': 'text/plain' });
+            response.end('insert error');
+
+        }
+        response.writeHead(200, { 'Content-Type': 'text/plain' });
+        response.end('success');
+        console.log('close db');
+        db.close();
+    });
+}
+
+
+
 
 exports.route = route;
 

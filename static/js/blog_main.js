@@ -47,7 +47,7 @@ function getAticle(tag, page) {
             //获取评论数
             var commentCount = 0;
             $.get('/getCommentCount', { articleId: articleId, num:i} ,function(data){
-                commentCount = data.commentArr;
+                commentCount = data.commentArrCount;
                 console.log( 'commentCount: ',commentCount);
                 $('.info-comment span').eq(data.num).html(` (${commentCount}) `);
             });

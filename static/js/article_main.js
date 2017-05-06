@@ -1,17 +1,109 @@
 
-var hasLogin = false;
+var hasLogin = false;       //记录登录状态
+var currentUser = '';       //记录当前登陆后的用户名
+var para = window.location.search;
+var articleId = para.substring((para.indexOf('=') + 1));    //当前页面显示的文章的id
 
 $(function () {
-    var para = window.location.search;
-    var articleId = para.substring((para.indexOf('=') + 1));
 
     $.get('/getArticle', { articleId: articleId }, function (data) {
         $('.title').html(data.title);
         $('.timestamp span').html(data.lastEditDate.substring(0, 10));
         $('.content').html(data.content);
-
     }, 'json');
 
+    getComment();
+
+    //登录框显示
+    $('.write-comment').on('click', function () {
+        if (!hasLogin) {
+            //如果是未登陆状态，则弹框进行登陆
+            showMask();
+            // mask.show();//用这个的话相当于display:block 就把display:flex冲掉了
+            $(window).on('resize', maskResize);
+            //实现点击框外 关闭该框
+            //阻止冒泡
+            $('.login').on('click', function (event) {
+                event.stopPropagation();
+            });
+            $('.register').on('click', function (event) {
+                event.stopPropagation();
+            });
+            //利用setTimeout执行优先级低 否则登录框弹不出来，得先弹出来，再阻止冒泡
+            //否则点击弹出登录框也会冒泡到document，关闭登录框
+            setTimeout(function () {
+                $(document).on('click', hideMask);
+            }, 0);
+        } else {
+            //用户已经登陆，应该变成可以编辑的
+            showCommentEditArea();
+        }
+    });
+
+    //登录框
+    //登录框的点击登录
+    $('#j-s-signin-btn').on('click', function (event) {
+        event.preventDefault();     //阻止默认事件
+        signin();
+    });
+    //点击登录框的注册
+    $('#j-s-register-btn').on('click', function (event) {
+        event.preventDefault();
+        $('.login').hide();
+        $('.register').show();
+        $('.signin-preload').hide();
+        return false;
+    });
+
+    //注册框
+    //登录同样要同步
+    //点击注册框的登录，返回登录框
+    $('#j-r-signin-btn').on('click', function (event) {
+        event.preventDefault();
+        $('.register').hide();
+        $('.login').show();
+        return false;
+    });
+
+    //点击注册框的注册
+    $('#j-r-register-btn').on('click', function (event) {
+        event.preventDefault();
+
+        //发送ajax请求 注册
+        registerNewUser();
+    });
+
+});
+
+
+function showMask() {
+    $('.mask').css({
+        height: $(window).height(),
+        width: $(window).width(),
+        top: $(window).scrollTop() + 'px',
+    });
+    $('body').css('overflow', 'hidden'); //以此达到页面不可以滚动
+    $('.signin-preload').hide();
+    $('#signin-username').focus();
+}
+
+function maskResize() {
+    $('.mask').css({
+        height: $(window).height(),
+        width: $(window).width(),
+        top: $(window).scrollTop() + 'px',
+    });
+}
+
+function hideMask() {
+    $('body').css('overflow', 'visible');
+    $(window).off('resize', maskResize);
+    $('.mask').css('width', 0 + 'px');
+    $('.signin-preload').hide();
+    $(document).off('click', hideMask);
+}
+
+function getComment() {
     $.get('/getComment', { articleId: articleId }, function (data) {
         var commentArr = data.commentArr;
         //先清空父级
@@ -30,107 +122,119 @@ $(function () {
             oLi.appendTo('.comment-area ul');
         }
     });
+}
 
+function showCommentEditArea() {
+    $('.write-comment').html(`
+                <form action="">
+                <textarea name="newComment" id="new-comment" cols="30" rows="10" placeholder="ctrl+回车快速提交评论"></textarea>
+                <a class="waves-effect waves-light btn blue-grey darken-1" id="comment-submit-btn">发表</a>
+                </form> 
+            `);
+    $('.write-comment').css('height', 100 + 'px');
+    $('.write-comment').off('click');
+    $('#new-comment').focus();
 
-    //登录框显示
-    $('.write-comment').on('click', function () {
-        showMask();
+    $('#new-comment').on('keydown', function (event) {
+        if (event.keyCode === 13 && event.ctrlKey) {
+            submitNewComment();
+        }
+    });
+    $('#comment-submit-btn').on('click', submitNewComment);
+}
 
-        // mask.show();//用这个的话相当于display:block 就把display:flex冲掉了
-        $(window).on('resize', maskResize);
-
-        //实现点击框外 关闭该框
-        //阻止冒泡
-        $('.login').on('click', function(event) {
-            event.stopPropagation();
+function submitNewComment() {
+    //提交评论
+    var newComment = $('#new-comment').val();
+    if (newComment) {
+        $.post('/pushNewComment', {
+            articleId: articleId,
+            currentUser: currentUser,
+            content: newComment
+        }, function (data) {
+            if (data === 'success') {
+                alert('评论成功！');
+                //插入评论成功， 刷新评论列表
+                getComment(articleId);
+            } else {
+                alert('插入评论失败:' + data);
+            }
         });
-        $('.register').on('click', function(event) {
-            event.stopPropagation();
-        });
-        //利用setTimeout执行优先级低 否则登录框弹不出来，得先弹出来，再阻止冒泡
-        //否则点击弹出登录框也会冒泡到document，关闭登录框
-        setTimeout(function () {
-             $(document).on('click', hideMask);
-        }, 0);
-    });        
+        $('#new-comment').val('');
+    } else {
+        alert('评论不能为空！');
+    }
+}
 
-    //登录框
+function signin() {
     //注意登录要同步  同步等待的时候可以增加 加载的显示
-    //登录框的点击登录
-    $('#j-s-signin-btn').on('click', function(event){
-        event.preventDefault(); //阻止默认事件
-        $('body').css('overflow', 'visible');
-        $(window).off('resize', maskResize);   
-        $('.signin-preload').show();
-        setTimeout(function(){
-            hideMask();
-            //如果进行其他操作 关闭等 那就要移除计时器
-        }, 3000);
 
-        //检验表单 
+    $('.signin-preload').show();
+    //检验表单 
+    //发送ajax请求 同步 并且显示加载页面 
+    var username = $('#signin-username').val();
+    var password = $('#signin-password').val();
 
-
-        //发送ajax请求 同步 并且显示加载页面  
-
-
-        //
-    });
-    //点击登录框的注册
-    $('#j-s-register-btn').on('click', function(event) {
-        event.preventDefault(); 
-        $('.login').hide();
-        $('.register').show();
-        $('.signin-preload').hide();
-        return false;
-    });
-
-    //注册框
-    //登录同样要同步
-    //点击注册框的登录，返回登录框
-    $('#j-r-signin-btn').on('click', function(event) {
-        event.preventDefault(); 
-        $('.register').hide();
-        $('.login').show();
-        return false;
-    });
-
-    //点击注册框的注册
-    $('#j-r-register-btn').on('click', function(event) {
-        event.preventDefault();
-        
-
-    //发送ajax请求
-
-    //
-    });
-
-
-});
-
-function showMask () {
-    $('.mask').css({
-            height: $(window).height(),
-            width: $(window).width(),
-            top: $(window).scrollTop() + 'px',
-            dispaly: 'flex'
+    setTimeout(function () {
+        $.ajax({
+            type: 'get',
+            url: '/signin',
+            data: { username: username, password: password },
+            async: false,
+            success: function (result) {
+                if (result === 'success') {
+                    signinSuccess(username);
+                } else {
+                    alert(result);
+                    $('.signin-preload').hide();
+                }
+            },
+            dataType: 'text'
         });
-    $('body').css('overflow','hidden'); //以此达到页面不可以滚动
-    $('.signin-preload').hide();
-
+    }, 1000);
 }
 
-function maskResize() {
-    $('.mask').css({
-        height: $(window).height(),
-        width: $(window).width(),
-        top: $(window).scrollTop() + 'px',
-    });
-}
+function signinSuccess(username) {
+    hideMask();
 
-function hideMask(){
+    hasLogin = true;
+    currentUser = username;
+    //释放窗口
     $('body').css('overflow', 'visible');
-    $(window).off('resize', maskResize);   
-    $('.mask').css('width', 0+'px');   
-    $('.signin-preload').hide();
-    $(document).off('click', hideMask);
+    $(window).off('resize', maskResize);
+
+    showCommentEditArea();
 }
+
+function registerNewUser() {
+    var username = $('#register-username').val();
+    var password = $('#register-password').val();
+    var telephone = $('#telephone').val();
+    var email = $('#email').val();
+
+    if (username && password && telephone && email) {
+        $('.signin-preload').show();
+        setTimeout(function () {
+            $.ajax({
+                type: 'get',
+                url: '/registerNewUser',
+                data: { username: username, password: password, telephone: telephone, email: email },
+                async: false,
+                success: function (result) {
+                    if (result === 'success') {
+                        alert('注册成功！快去评论吧(～￣▽￣)～')
+                        signinSuccess(username);
+                    } else {
+                        alert(result);
+                        $('.signin-preload').hide();
+                    }
+                },
+                dataType: 'text'
+            });
+        }, 1000);
+    } else {
+        alert('还有东西没填完o~');
+        $('.signin-preload').hide();
+    }
+}
+
