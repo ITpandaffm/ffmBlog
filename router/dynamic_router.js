@@ -411,6 +411,40 @@ function route(pathName, response, request) {
                 });
             });
             break;
+        case '/getVisitorNum':
+            MongoClient.connect('mongodb://ffmblogAdmin:ffmblogAdmin@127.0.0.1:27017/blog', (err, db) => {
+                if (err) {
+                    console.log('connecnt error ', err);
+                    return false;
+                }
+                console.log('mongo here');
+                //点赞
+                var visitorCollection = db.collection('visitor');
+
+                visitorCollection.find({}).toArray((err, data) => {
+                    if (err) {
+                        console.log('get visitorNum find error', err);
+                    }
+                    visitorCollection.update({_id: data[0]._id}, {
+                        $inc: {
+                            visitorNum: 1
+                        }
+                    }, (err, result) => {
+                        if (err) {
+                            console.log('visitorNum update error', err);
+                        }
+                        response.writeHead(200, { 'Content-Type': 'text/json' });
+                        response.end(JSON.stringify({
+                            visitorNum: ++data[0].visitorNum
+                        }));
+                        console.log('close db');
+                        db.close();
+                    });
+                });
+
+
+            });
+            break;
         default:
             console.log('default');
     }

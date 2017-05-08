@@ -89,4 +89,10 @@ $(function() {
              $('.life-pic img').animate({opacity: 0}, { duration: 300 }).attr('src', aPigPath[nCurPic % aPigPath.length]).animate({opacity:1}, { duration: 400});
              $('.life-pic-container p').animate({opacity: 0}, { duration: 300 }).html(aPigDescrit[nCurPic % aPigDescrit.length]).animate({opacity:1}, { duration: 400});
         });
+    //获取网站访客数量
+    $.get('/getVisitorNum', function(data) {
+        console.log(data);
+        var visitorNum = data.visitorNum;
+        $('.footer-info span').html(visitorNum);
+    }, 'json');
 });

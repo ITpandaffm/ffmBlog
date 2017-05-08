@@ -97,11 +97,32 @@
     cursor: pointer;
     color: rgb(255, 137, 0);
 }
+.personal-contact a:hover{
+    cursor: pointer;
+    color: rgb(255, 137, 0);    
+}
+.personal-contact-qq {
+    position: relative;
+}
+.personal-contact-qq .qq-code-image {
+    display: none;
+    position: absolute;
+    width: 150px;
+    height: 170px;
+    top: -170px;
+    left: -40px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.personal-contact-qq .qq-code-image img {
+    width: 100%;
+    height: 100%;
+}
 
-
+.personal-contact-qq:hover .qq-code-image{
+    display: block;
+}
 /************Personal End***************/
-
-
 /************Content Start***************/
 
 .content {

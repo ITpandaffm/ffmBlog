@@ -261,10 +261,10 @@ footer span {
 	color: #ccc;
 	font-size: 60px;
 }
-/*.footer-logos li:hover {
+.footer-logos li:hover {
 	cursor: pointer;
 	color: rgb(255, 137, 0);
-}*/
+}
 .footer-logos a{
 	color: #ccc;
 }
@@ -272,6 +272,51 @@ footer span {
 	cursor: pointer;
 	color: rgb(255, 137, 0);
 }
+.footer-qq {
+	position: relative;
+}
+
+.footer-qq .qq-code-image {
+	display: none;
+	position: absolute;
+	width: 150px;
+	height: 170px;
+	top: -170px;
+	left: -50px;
+	border-radius: 20px;
+	overflow: hidden;
+}
+.footer-qq .qq-code-image img {
+	width: 100%;
+	height: 100%;
+}
+
+.footer-qq:hover .qq-code-image{
+	display: block;
+}
+.footer-wechat {
+	position: relative;
+}
+
+.footer-wechat .wechat-code-image {
+	display: none;
+	position: absolute;
+	width: 150px;
+	height: 170px;
+	top: -170px;
+	left: -50px;
+	border-radius: 20px;
+	overflow: hidden;
+}
+.footer-wechat .wechat-code-image img {
+	width: 100%;
+	height: 100%;
+}
+
+.footer-wechat:hover .wechat-code-image{
+	display: block;
+}
+
 
 /************Footer End***************/
 /************Mask Start***************/

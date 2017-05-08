@@ -6,7 +6,6 @@ var para = window.location.search;
 var articleId = para.substring((para.indexOf('=') + 1));    //当前页面显示的文章的id
 
 $(function () {
-
     $.get('/getArticle', { articleId: articleId }, function (data) {
         $('.title').html(data.title);
         $('.tag').html(data.tag);

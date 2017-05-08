@@ -16,6 +16,7 @@ var mime = {
     ".html":"text/html",
     ".jar": "application/mac-binhex40",
     ".jpg": "image/jpeg",
+    ".JPG": "image/jpeg",
     ".js":  "application/javascript",
     ".mp3": "audio/mpeg",
     ".ogg": "application/ogg",
