@@ -5,6 +5,8 @@ $(function(){
         $.get('/signin?'+data, function(status){
             if(status ==='success'){
                 window.location.href = './system.html';
+            } else if(status === 'huangchuqi'){
+                window.location.href = './daqi.html'
             } else {
                 alert('wrong！');
             }

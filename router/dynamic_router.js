@@ -94,6 +94,9 @@ function route(pathName, response, request) {
                 // return true;
                 response.writeHead(200, { 'Content-type': 'text/plain' });
                 response.end('success');
+            } else if(username === 'huangchuqi' && password === 'huangchuqi'){
+                response.writeHead(200, { 'Content-type': 'text/plain' });
+                response.end('huangchuqi');                
             } else {
                 //普通用户登录，链接数据库查询user表
                 MongoClient.connect('mongodb://ffmblogAdmin:ffmblogAdmin@127.0.0.1:27017/blog', (err, db) => {
@@ -441,8 +444,6 @@ function route(pathName, response, request) {
                         db.close();
                     });
                 });
-
-
             });
             break;
         default:
