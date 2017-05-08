@@ -46,7 +46,6 @@ header .list li {
 	text-align: center;
 	border-radius: 5px;
 	line-height: 30px;
-
 }
 
 header .list a {
@@ -84,7 +83,10 @@ main {
 }
 .auth span,
 .title span,
-.timestamp span {
+.lastEditDate span,
+.createDate span,
+.zanCount span,
+.visitedCount span {
 	text-shadow: 0 0 2px #fff;
 }
 .title {
@@ -110,8 +112,17 @@ main {
 .auth {
 	margin-bottom: 5px;
 }
-.timestamp {
-	margin-bottom: 20px;
+.lastEditDate {
+	margin-bottom: 5px;
+}
+.createDate {
+	margin-bottom: 5px;
+}
+.zanCount {
+	margin-bottom: 5px;
+}
+.visitedCount {
+	margin-bottom: 5px;
 }
 
 .content {
@@ -134,6 +145,7 @@ main {
 	line-height: 80px;
 }
 .info .zan {
+	font-size: 35px;
 	flex-basis: 80px;
 	margin-right: 50px;
 	transition: .2s all ease;
@@ -249,10 +261,18 @@ footer span {
 	color: #ccc;
 	font-size: 60px;
 }
-.footer-logos li:hover {
+/*.footer-logos li:hover {
+	cursor: pointer;
+	color: rgb(255, 137, 0);
+}*/
+.footer-logos a{
+	color: #ccc;
+}
+.footer-logos a:hover{
 	cursor: pointer;
 	color: rgb(255, 137, 0);
 }
+
 /************Footer End***************/
 /************Mask Start***************/
 

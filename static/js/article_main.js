@@ -1,6 +1,7 @@
 
 var hasLogin = false;       //记录登录状态
 var currentUser = '';       //记录当前登陆后的用户名
+var hasZan = false;
 var para = window.location.search;
 var articleId = para.substring((para.indexOf('=') + 1));    //当前页面显示的文章的id
 
@@ -8,7 +9,11 @@ $(function () {
 
     $.get('/getArticle', { articleId: articleId }, function (data) {
         $('.title').html(data.title);
-        $('.timestamp span').html(data.lastEditDate.substring(0, 10));
+        $('.tag').html(data.tag);
+        $('.lastEditDate span').html(new Date(data.lastEditDate).toLocaleString());
+        $('.createDate span').html(new Date(data.createDate).toLocaleString());
+        $('.zanCount  span').html(`(${data.zan})`);
+        $('.visitedCount span').html(`(${data.visited})`);
         $('.content').html(data.content);
     }, 'json');
 
@@ -52,7 +57,7 @@ $(function () {
         $('.login').hide();
         $('.register').show();
         $('.signin-preload').hide();
-        return false;
+        $('#register-username').focus();
     });
 
     //注册框
@@ -62,7 +67,7 @@ $(function () {
         event.preventDefault();
         $('.register').hide();
         $('.login').show();
-        return false;
+        $('#signin-username').focus();
     });
 
     //点击注册框的注册
@@ -73,6 +78,33 @@ $(function () {
         registerNewUser();
     });
 
+
+    //点赞功能
+    $('.zan').on('click', function () {
+        if (hasZan) {
+            Materialize.toast('您已经赞过了(￣▽￣)~*', 3000, 'rounded')
+        } else {
+            //发送请求给数据库 zan++
+            $.get('/zanArticle', { articleId: articleId }, (result) => {
+                if (result === 'success') {
+                    Materialize.toast('谢谢您的支持(￣▽￣)~*', 3000, 'rounded');
+                    hasZan = true;
+                    $('.zan').html(`
+                     <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-heart"></use>
+                         </svg>
+                       `).css('color', 'rgb(255, 137, 0)');
+                } else {
+                    alert('点赞失败了..稍后再试试？');
+                }
+            });
+        }
+    });
+
+    //打赏功能
+    $('.money').on('click', function(){
+        Materialize.toast('谢谢兄台！心意已get！打赏自是不必啦ヾ(^▽^ヾ)', 3000, 'rounded');
+    });
 });
 
 
@@ -224,8 +256,8 @@ function registerNewUser() {
                     if (result === 'success') {
                         alert('注册成功！快去评论吧(～￣▽￣)～')
                         signinSuccess(username);
-                    } else {
-                        alert(result);
+                    } else if(result === 'hasUser') {
+                        alert('用户已被注册！');
                         $('.signin-preload').hide();
                     }
                 },

@@ -34,7 +34,7 @@ function route(pathName, response, request) {
                     }
                     var returnData = {
                         articleList: {
-                            content: docs,
+                            content: docs
                         }
                     };
                     response.writeHead(200, { 'Content-Type': 'text/json' });
@@ -65,10 +65,20 @@ function route(pathName, response, request) {
                     }
                     response.writeHead(200, { 'Content-Type': 'text/json' });
                     response.end(JSON.stringify(docs[0]), 'utf-8');
-                    console.log('close db');
-                    db.close();
-                });
 
+                    //修改数据库，该文章的访问量+1
+                    articleCollection.update({ _id: id }, {
+                        $inc: {
+                            visited: 1
+                        }
+                    }, (err, result) => {
+                        if (err) {
+                            console.log('update visited error', err);
+                        }
+                        console.log('close db');
+                        db.close();
+                    });
+                });
             });
 
             break;
@@ -218,7 +228,6 @@ function route(pathName, response, request) {
             });
             break;
         case '/rewriteArticle/Done':
-            console.log('/rewriteArticle/Done');
             MongoClient.connect('mongodb://ffmblogAdmin:ffmblogAdmin@127.0.0.1:27017/blog', (err, db) => {
                 if (err) {
                     console.log('connecnt error ', err);
@@ -352,17 +361,56 @@ function route(pathName, response, request) {
                     email: reqPara.email
                 };
                 var userCollection = db.collection('user');
-                userCollection.insert(newUser, (err, result) => {
+                userCollection.find({ name: reqPara.username }).toArray((err, data) => {
                     if (err) {
-                        console.log('insert error', err);
+                        console.log('find user', err);
                     }
-                    console.log('insert result', result);
+                    if (data.length) {
+                        //证明找到相关用户, 已经被注册过了。
+                        response.writeHead(200, { 'Content-Type': 'text/plain' });
+                        response.end('hasUser');
+                    } else {
+                        userCollection.insert(newUser, (err, result) => {
+                            if (err) {
+                                console.log('insert error', err);
+                            }
+                            console.log('insert result', result);
+                            response.writeHead(200, { 'Content-Type': 'text/plain' });
+                            response.end('success');
+                        });
+                    }
+                    console.log('close db');
+                    db.close();
+                });
+            });
+            break;
+        case '/zanArticle':
+            MongoClient.connect('mongodb://ffmblogAdmin:ffmblogAdmin@127.0.0.1:27017/blog', (err, db) => {
+                if (err) {
+                    console.log('connecnt error ', err);
+                    return false;
+                }
+                console.log('mongo here');
+                //点赞
+                var articleCollection = db.collection('article');
+                var id = mongoose.Types.ObjectId(reqPara.articleId);
+
+                articleCollection.update({ _id: id }, {
+                    $inc: {
+                        zan: 1
+                    }
+                }, (err, result) => {
+                    if (err) {
+                        console.log('update error', err);
+                    }
+                    console.log('update result');
                     response.writeHead(200, { 'Content-Type': 'text/plain' });
                     response.end('success');
                     console.log('close db');
                     db.close();
                 });
             });
+            break;
         default:
             console.log('default');
     }

@@ -65,13 +65,13 @@ function getAticle(tag, page) {
                                     <svg class="icon" aria-hidden="true">
                                         <use xlink:href="#icon-date"></use>
                                     </svg>
-                                    <span>${curData.createDate.substring(0, 10)}</span>
+                                    <span>${new Date(curData.createDate).toLocaleString()}</span>
                                 </div>
                                 <div class="info-tag">
                                     <svg class="icon" aria-hidden="true">
                                         <use xlink:href="#icon-tag"></use>
                                     </svg> <span>
-                                        JavaScript
+                                        ${curData.tag}
                                     </span>
                                 </div>
                                 <div class="info-zan">

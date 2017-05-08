@@ -349,7 +349,10 @@ footer span {
 	/*opacity: .8;*/
 	font-size: 60px;
 }
-.footer-logos li:hover {
+.footer-logos a{
+	color: #ccc;
+}
+.footer-logos a:hover{
 	cursor: pointer;
 	color: rgb(255, 137, 0);
 }
