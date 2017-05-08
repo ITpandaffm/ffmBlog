@@ -71,6 +71,7 @@
 
 more contact way plz click[http://www.fengfuming.com/](http://www.fengfuming.com/)
 
+最后：衷心感谢那些在开发过程中热心给予我帮助的各位！
 
 *ffmBlog V1.0  all copyright reserved*
 
