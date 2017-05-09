@@ -128,6 +128,13 @@ main {
 .content {
 	width: 80%;
 	margin: 0 auto;
+	overflow: hidden;
+}
+.content img {
+	width: 100%;
+}
+.content video {
+	width: 100%;
 }
 
 .info {

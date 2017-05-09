@@ -50,6 +50,32 @@
 
 	......
 
+### 目录层级
+
+	├── images
+	├── index.js
+	├── node_modules
+	├── package.json
+	├── readme.md
+	├── router
+	│   ├── dynamic_router.js
+	│   ├── router.js
+	│   ├── router_mime.js
+	│   └── static_router.js
+	├── server.js
+	└── static
+	    ├── LICENSE
+	    ├── coffeescript
+	    ├── css
+	    ├── favicon.ico
+	    ├── fonts
+	    ├── html
+	    ├── image
+	    ├── js
+	    ├── npm-debug.log
+	    └── stylus
+
+
 ### 优化方向
 
 数据获取较大，接口设计可以优化，页面首次加载较慢，列表页获取数据数据量较大，代码可以优化压缩。
@@ -57,6 +83,7 @@
 ### 下版本开发展望
 
 实现pwa，响应式开发提高移动端用户体验，优化业务逻辑，缩短加载页面时间。
+
 
 
 ### 结语
