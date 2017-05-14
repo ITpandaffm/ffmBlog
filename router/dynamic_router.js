@@ -491,7 +491,7 @@ function insertNewComment(postData, db, response) {
     commentCollection.insert({
         article_id: postData.articleId,
         user_name: postData.currentUser,
-        avatar_path: 'static/image/avatar.jpeg',
+        avatar_path: 'http://opx5dtob7.bkt.clouddn.com/avatar.jpeg',
         timestamp: new Date(),
         content: postData.content
     }, (err, result) => {

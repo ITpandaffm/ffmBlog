@@ -81,7 +81,7 @@ $(function() {
     }
 
     //life pic change
-        var aPigPath = ['static/image/homepage/pic0.jpeg', 'static/image/homepage/pic1.jpeg', 'static/image/homepage/pic2.jpeg', 'static/image/homepage/pic3.jpeg', 'static/image/homepage/pic4.png'];
+        var aPigPath = ['http://opx5dtob7.bkt.clouddn.com/pic0.jpeg', 'http://opx5dtob7.bkt.clouddn.com/pic1.jpeg', 'http://opx5dtob7.bkt.clouddn.com/pic2.jpeg', 'http://opx5dtob7.bkt.clouddn.com/pic3.jpeg', 'http://opx5dtob7.bkt.clouddn.com/pic4.jpeg'];
         var aPigDescrit = ['摄于沈阳 冬 2016-12-26', '摄于北京 春 2017-03-30', '摄于沈阳 冬 2017-12-13', '摄于沈阳 夏 2016-05-03', '摄于天池 秋 2014-10-07'];
         var nCurPic = 0;
         $('.life-pic').click(function(event) {

@@ -102,3 +102,14 @@ more contact way plz click[http://www.fengfuming.com/](http://www.fengfuming.com
 
 *ffmBlog V1.0  all copyright reserved*
 
+---
+
+#####优化更新v1.2 时间？
+
+1. 优化文章页显示效果，对于markdown显示的图片和视频添加具体大小限制，优化显示效果 (done)
+2. 列表页把content去掉，或者修改数据库表设计，自动截取10个字作为简短介绍。（还是去掉content吧），减少传输量，看能否加快列表页的显示
+3. 图片压缩，静态资源扔到七牛云上。  (done,页面加载速度提高5倍以上，1s左右可以加载页面完毕)
+4. 加载jquery文件十分耗时。（解决？ -> 把jquery也放到了七牛云上）
+5. sessionStorage记录用户登录状态，就算刷新当前页面也可以，优化用户体验。
+6. 改用https协议。
+

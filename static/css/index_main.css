@@ -10,7 +10,7 @@ header {
 	position: relative;
 	width: 100%;
 	height: 100%;
-	background-image: url('../image/homepage/background.jpeg');
+	background-image: url('http://opx5dtob7.bkt.clouddn.com/background.jpeg');
 	background-size: cover;
 }
 header .title {
@@ -168,7 +168,7 @@ header .arrow .icon:hover {
 	padding-top: 20px;
 	padding-bottom: 20px;
 	/*background-image: url('../image/homepage/treeBackground.jpg');*/
-	background-image: url('../image/homepage/background.jpeg');
+	background-image: url('http://opx5dtob7.bkt.clouddn.com/background.jpeg');
 
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -241,7 +241,7 @@ header .arrow .icon:hover {
 	width: 100%;
 	height: 740px;
 	/*background-image: url(../image/homepage/mapBackground.jpg);*/
-	background-image: url('../image/homepage/background.jpeg');
+	background-image: url('http://opx5dtob7.bkt.clouddn.com/background.jpeg');
 	background-size: cover;
 }
 .life-wrapper {
@@ -294,7 +294,7 @@ header .arrow .icon:hover {
 	width: 100%;
 	height: 550px;
 	/*background-image: url(../image/homepage/sloganBackground.png);*/
-	background-image: url('../image/homepage/background.jpeg');
+	background-image: url('http://opx5dtob7.bkt.clouddn.com/background.jpeg');
 
 	background-position: 0 -255px;
 	background-size: cover;
