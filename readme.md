@@ -104,6 +104,7 @@ more contact way plz click[http://www.fengfuming.com/](http://www.fengfuming.com
 
 ---
 
+
 #####优化更新v1.2 时间？
 
 1. 优化文章页显示效果，对于markdown显示的图片和视频添加具体大小限制，优化显示效果 (done)
@@ -112,4 +113,16 @@ more contact way plz click[http://www.fengfuming.com/](http://www.fengfuming.com
 4. 加载jquery文件十分耗时。（解决？ -> 把jquery也放到了七牛云上）
 5. sessionStorage记录用户登录状态，就算刷新当前页面也可以，优化用户体验。
 6. 改用https协议。
+7. 显示文章应该倒序，按最新的显示在前面
+
+###最近会重构布局
+
+没有适配移动端的确很蛋疼，最近刚上手angular等框架，目测近期会开始着手重构整个博客。
+
+个人博客还是会以记录个人学习经历及技术笔记为主。
+
+下次更新会着重考虑移动端的体验与发布页，还有代码显示的美化
+
+*敬请期待*
+
 
